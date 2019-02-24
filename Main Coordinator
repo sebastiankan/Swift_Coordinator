@@ -1,0 +1,32 @@
+//
+//  MainCoordinator.swift
+//  working
+//
+//  Created by Saba on 2/24/19.
+//  Copyright © 2019 Saba. All rights reserved.
+//
+
+import UIKit
+
+class MainCoordinator: Coordinator {
+    var children = [Coordinator]()
+    
+    var navigationController: UINavigationController
+    
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
+
+    func start() {
+        let vc = ViewController()
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func secondController() {
+        let vc  = SecondViewController()
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
+    }
+
+}
